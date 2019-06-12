@@ -26,6 +26,7 @@ public class SimonSays extends KeyAdapter {
 	HashMap<Integer, String> images = new HashMap<Integer, String>();
 	private int imageIndex;
 	private int tries = 0;
+	int score = 0;
 	private boolean simonSays = false;
 	Date timeAtStart;
 
@@ -51,15 +52,16 @@ public class SimonSays extends KeyAdapter {
 
 	public void keyPressed(KeyEvent e) {
 		// 15. Make a points variable to track the score.
-		int score = 0;
+		
 		// 16. If the keyCode matches the imageIndex and "Simon says"
 		if ((e.getKeyCode() == imageIndex && simonSays == true) || (e.getKeyCode() != imageIndex && simonSays == false)) {
 			score++;
 			speak("Congrats, rats. You are correct");
-			tries++;
+		} else {
+			speak("FOOL! You are wrong");
 		}
 		// 17. Increase the value of score
-
+		
 		// 18. Use the speak method to tell the user they were correct
 
 		// 19. If the keyCode doesn't match the imageIndex and "Simon didn't
@@ -70,21 +72,25 @@ public class SimonSays extends KeyAdapter {
 		// 21. Use the speak method to tell the user they were correct
 
 		// 22. Increment tries by 1
-
+		tries++;
 		// 25. If tries is greater than 9 (or however many you want)...
-
+		if (tries > 9) {
+			speak("Your score is " + score);
+			System.exit(0);
+		}
 		// 26. Tell the user their score
 
 		// 27. Exit the program
 
 		// 23. Dispose of the frame
-
+		frame.dispose();
 		// 24. Call the showImage method to show a new image
+		showImage();
 	}
 
 	private void showImage() {
 		// 5. Initialize your frame to a new JFrame()
-		
+		frame = new JFrame();
 		// 6. Set the frame to visible
 		frame.setVisible(true);
 		// 7. Uncomment the following line to add a random image to your frame
