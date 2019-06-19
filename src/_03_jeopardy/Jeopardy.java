@@ -35,6 +35,7 @@ public class Jeopardy implements ActionListener {
 	private JButton firstButton;
 	private JButton secondButton;
 	private JButton thirdButton, fourthButton, fifthButton;
+	private JButton sixthButton, seventhButton,eighthButton,ninthButton, tenthButton;
 	private JPanel quizPanel;
 	private int score = 0;
 	private JLabel scoreBox = new JLabel("0");
@@ -55,14 +56,20 @@ public class Jeopardy implements ActionListener {
 		frame.setTitle("OSSUARY");
 		// 3. Create a JPanel variable to hold the header using the createHeader method
 		JPanel commu = createHeader("MUSICAL INSTRUMENTS");
+		JPanel ratroom = createHeader("NEW RAT");
 		// 4. Add the header component to the quizPanel
 		quizPanel.add(commu);
+		quizPanel.add(ratroom);
 		// 5. Add the quizPanel to the frame
 		frame.add(quizPanel);
 		// 6. Use the createButton method to set the value of firstButton
 		firstButton = createButton("$200");
 		// 7. Add the firstButton to the quizPanel
 		quizPanel.add(firstButton);
+		firstButton.addActionListener(this);
+		sixthButton = createButton("$200");
+		quizPanel.add(sixthButton);
+		sixthButton.addActionListener(this);
 		// 8. Write the code to complete the createButton() method below. Check that your
 		// game looks like Figure 1 in the Jeopardy Handout - http://bit.ly/1bvnvd4.
 
@@ -72,19 +79,51 @@ public class Jeopardy implements ActionListener {
 		// 10. Add the secondButton to the quizPanel
 		quizPanel.add(secondButton);
 		// 11. Add action listeners to the buttons (2 lines of code)
-		firstButton.addActionListener(this);
+		
 		secondButton.addActionListener(this);
+		seventhButton = createButton("$400");
+		quizPanel.add(seventhButton);
+		seventhButton.addActionListener(this);
 		// 12. Write the code to complete the actionPerformed() method below
 		
 		// 13. Add buttons so that you have $200, $400, $600, $800 and $1000 questions
 		thirdButton = createButton("$600");
-		fourthButton = createButton("$800");
-		fifthButton = createButton("$1000");
-		
+		quizPanel.add(thirdButton);
 		thirdButton.addActionListener(this);
+		
+		eighthButton = createButton("$600");
+		quizPanel.add(eighthButton);
+		eighthButton.addActionListener(this);
+		
+		fourthButton = createButton("$800");
+		quizPanel.add(fourthButton);
 		fourthButton.addActionListener(this);
+		
+		ninthButton = createButton("$800");
+		quizPanel.add(ninthButton);
+		ninthButton.addActionListener(this);
+		
+		fifthButton = createButton("$1000");
 		fifthButton.addActionListener(this);
+				
+		
+		
+		
+		
+		quizPanel.add(fifthButton);
+		
+		
+		
+		
+		
+		
+		
+		
+		tenthButton = createButton("$1000");
+		quizPanel.add(tenthButton);
+		tenthButton.addActionListener(this);
 		 /*
+		  * 
 		 * [optional] Use the showImage or playSound methods when the user answers a
 		 * question
 		 */		
@@ -127,15 +166,15 @@ public class Jeopardy implements ActionListener {
 		}
 		
 		if (buttonPressed == thirdButton) {
-			askQuestion("This playing technique for bowed instruments involves striking or drawing the wood of the bow against the strings, rather than the hair of the bow.", "col legno", 600);
+			askQuestion("This playing technique for bowed instruments involves striking or drawing the wood of the bow, rather than the hair of the bow, against the strings.", "col legno", 600);
 		}
 		
 		if (buttonPressed == fourthButton) {
-			askQuestion("", "", 800);
+			askQuestion("The bandura, Ukraine's national instrument, mainly comes in 3 styles: classical, Kharkiv, and ____.", "kiev", 800);
 		}
 		
 		if (buttonPressed == fifthButton) {
-			askQuestion("", "", 1000);
+			askQuestion("He is the most brutal, ruthless killer on Earth. He has ended countless lives with no remorse, and fears nobody.", "dennis prager", 1000);
 		}
 		// If the buttonPressed was the secondButton
 
@@ -143,6 +182,7 @@ public class Jeopardy implements ActionListener {
 
 		// Clear the text on the button that was pressed (set the button text to nothing)
 		buttonPressed.setText(null);
+		buttonPressed.removeActionListener(this);
 
 	}
 
@@ -189,9 +229,9 @@ public class Jeopardy implements ActionListener {
 
 	private Component makeScorePanel() {
 		JPanel panel = new JPanel();
-		panel.add(new JLabel("score:"));
+		panel.add(new JLabel("Score:"));
 		panel.add(scoreBox);
-		panel.setBackground(Color.CYAN);
+		panel.setBackground(Color.BLUE);
 		return panel;
 	}
 
